@@ -1,0 +1,61 @@
+@charset 'utf-8';
+
+html {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;        /*폰스 사이즈 및 글꼴 적용 */
+}
+
+body {
+	 overflow-x: hidden;    /*가로 스크롤이 안생기게 하기 위함 */
+	 color: rgb(29, 29, 31);    /*body 부분 폰트 색상*/
+	 letter-spacing: -0.05em;     /*글자 사이의 간격 줄임*/
+	 background-color: white;
+}
+
+p {
+	line-height: 1.6;             /*텍스트간의 줄 간격(상.하)을 조절할 때 사용*/
+}
+/*------------------------------------여기까지는 기본 reset 느낌---------------------------------------*/
+
+a {
+	color: rgb(29, 29, 31);    /*a태그 포함 글꼴색 바꿈*/
+	text-decoration: none;       /*밑줄 제거*/
+}
+
+.global-nav {
+	height: 44px;
+}
+/**/
+.local-nav {
+	height: 52px;
+	border-bottom: 1px solid #ddd;
+}
+
+.global-nav-links,    /*겹치니까 둘다 같은요소 적용*/
+.local-nav-links {
+	display: flex;    /*안에 요소가 늘어나면 차곡차곡 가로로 채워지는데 한 줄로 쭉 늘여 세운다
+	                         컨테이너 자체는 블록요소처럼 활용/ item은 인라인요소처럼 사용*/
+	align-items: center;     /*수직기준 중앙 정렬*/
+	max-width: 1000px;      /*화면이 1000px이상으로 커질 때 더이상 커지게 하고 싶지 않을 때*/
+	height: 44px;    /*부모 global-nav와 같이 맞춰줘야 align-items: center로 수직 중앙정렬 됨*/
+	margin: 0 auto;  /* 위 아래 0  외쪽 오른쪽 auto로 센터 정렬*/
+}
+
+.global-nav-links {
+	justify-content: space-between;	 	/*균일하게 벌려준다*/				 
+}
+/**/
+.product-name {
+	margin-right: auto;  /*오른쪽으로 최대한 공간을 사용, 자동으로 a링크들 오른쪽으로 밀림*/
+	font-size: 1.4rem;
+	font-weight: bold;   /*글씨 두께 두껍게*/
+}
+
+.local-nav-links a:not(.product-name) {  /*not을 사용해서 product-name a태그 부분만 margin효과 제거*/
+	margin-left: 2em;   /*왼쪽 마진을 써서 a태그 공간을 왼쪽으로 벌림*/
+	font-size: 0.8rem;
+}
+
+
+
+
