@@ -23,13 +23,26 @@ a {
 }
 
 .global-nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;  /*position: absolute일때는 width: 100%줘야 넓펴짐*/
 	height: 44px;
+	padding: 0 1rem;  /*상하0,좌우1rem /mobile에서 사이드메뉴 붙는거 방지*/
 }
 /**/
 .local-nav {
+	position: absolute;
+	top: 45px;       /*0으로 하면global-nav와 글씨 겹쳐서 45px로 해줌 */
+	left: 0;
+	z-index: 11;
+	width: 100%;     /*position: absolute일때는 width: 100%줘야 넓펴짐*/
 	height: 52px;
+	padding: 0 1rem;  /*상하0,좌우1rem /mobile에서 사이드메뉴 붙는거 방지*/
 	border-bottom: 1px solid #ddd;
 }
+
 
 .global-nav-links,    /*겹치니까 둘다 같은요소 적용*/
 .local-nav-links {
@@ -37,7 +50,7 @@ a {
 	                         컨테이너 자체는 블록요소처럼 활용/ item은 인라인요소처럼 사용*/
 	align-items: center;     /*수직기준 중앙 정렬*/
 	max-width: 1000px;      /*화면이 1000px이상으로 커질 때 더이상 커지게 하고 싶지 않을 때*/
-	height: 44px;    /*부모 global-nav와 같이 맞춰줘야 align-items: center로 수직 중앙정렬 됨*/
+	height: 100%;    /*부모 global-nav와 같이 맞춰줘야 align-items: center로 수직 중앙정렬 됨*/
 	margin: 0 auto;  /* 위 아래 0  외쪽 오른쪽 auto로 센터 정렬*/
 }
 
@@ -45,15 +58,156 @@ a {
 	justify-content: space-between;	 	/*균일하게 벌려준다*/				 
 }
 /**/
-.product-name {
-	margin-right: auto;  /*오른쪽으로 최대한 공간을 사용, 자동으로 a링크들 오른쪽으로 밀림*/
+.local-nav-links .product-name {
+	margin-right: auto; /*오른쪽으로 최대한 공간을 사용, 자동으로 a링크들 오른쪽으로 밀림*/
 	font-size: 1.4rem;
-	font-weight: bold;   /*글씨 두께 두껍게*/
+	font-weight: bold; /*글씨 두께 두껍게*/
+}
+
+.local-nav-links a {
+	font-size: 0.8rem;
 }
 
 .local-nav-links a:not(.product-name) {  /*not을 사용해서 product-name a태그 부분만 margin효과 제거*/
 	margin-left: 2em;   /*왼쪽 마진을 써서 a태그 공간을 왼쪽으로 벌림*/
-	font-size: 0.8rem;
+}
+
+.scroll-section {
+	position: relative;
+	padding-top: 50vh;  /*뷰포트50 인터넷창의 절반만큼 padding top을 둠/ 요소의 상단 패딩(공백)을 설정 */
+	border: 3px solid crimson;  /*씬 구분 눈에 보이게 하기 위해*/
+}
+
+#scroll-section-0 h1 {
+	font-size: 4rem;  /*html=14px로 세팅되어있어서 14px x 4됨*/
+	text-align: center;  /*텍스트 정렬 센터*/
+	z-index: 5;
+}
+
+.main-message {
+	display: flex; /*가로방향 정렬*/
+	align-items: center;  /*div박스 안에서 세로방향 센터 정렬*/
+	justify-content: center;    /*가로방향 정렬*/
+	margin: 5px 0;
+	height: 3em;         /*박스 안쪽 가운데 맞추기위해 높이 설정*/
+	font-size: 2.5rem;      
+}
+
+.main-message p {
+	line-height: 1.2;  /*p태그 문단들의 상하 간격 조절*/
+	font-weight: bold;
+	text-align: center; /*텍스트 정렬 센터, 두줄 문단들 중앙 정렬*/
+}
+
+.main-message small {
+	display: block;  /*박스가 되어서 자동 줄바뀜*/
+	margin-bottom: 0.5em;
+	font-size: 1.2rem;
+}
+
+#scroll-section-2 .main-message {
+	font-size: 3.5rem;
+}
+
+.description {
+	max-width: 1000px;  /*최대 폭을*/
+	margin: 0 auto;  /*상하=0, 좌우=auto 센터 정렬*/
+	padding: 0 1rem; /*상하 = 0, 좌우 1rem으로 수직 라인 맞춤*/
+	font-size: 1.2rem;
+	color: #888;
+}
+
+.description strong {
+	float: left;        /*strong 영역에 글자 감싸고 돌게 하기 위함*/
+	margin-right: 0.3em; /*오른쪽에 너무 글자 붙지 않게 공간 만들기*/
+	font-size: 3rem;
+	color:black;
+}
+
+.sticky-elem.desc-message {
+	width: 45%;   /*화면에 가로50%를 사용/ 그러면 화면50%넘어가면 줄바뀜*/
+	font-weight: bold;
+}
+
+.pin {
+	width: 1px;		/*세로형 핀을 만들기 위함*/
+	height: 100px;  /*세로형 핀을 만들기 위함*/
+	background-color: black;
+}
+
+.mid-message {
+	max-width: 1000;
+	margin: 0 auto;
+	padding: 0 1rem;  /*상하 = 0, 좌우 1rem으로 수직 라인 맞춤*/
+	font-size: 2rem;
+	color: #888;
+}
+
+.mid-message strong { 
+	color: black;
+}
+
+.canvas-caption {
+	max-width: 1000;
+	margin: 0 auto;
+	font-size: 1.2rem;
+	color: #888;
+	padding: 0 1rem;  /*상하 = 0, 좌우 1rem으로 수직 라인 맞춤*/
+	/* text-align: center;   글자 중앙 정렬 */
+}
+.sticky-elem {
+	display: none;     /*지워서 body로 불러올때 하나하나씩 나타내기 위함*/
+	position: fixed;   /*스크롤 따라다니게 고정*/
+	left: 0;
+	width: 100%;	     
+					   /*none 적용 안됐는데 main-message와sticky-elem css순서 바꾸니 적용됨*/
+}
+
+.footer {
+	display: flex;
+	align-items: center; /*세로방향 정렬*/
+	justify-content: center; /*가로방향 정렬*/
+	height: 7rem;
+	background-color: rgb(162, 220, 234);
+}
+/*#show-scene = body에 붙는 id
+section0123마다 하나씩 불러오기 위함*/
+/*맨 왼쪽에 body태그 지워서 하나하나 씩 보이게 하는 작동 해결함*/
+#show-scene-0 #scroll-section-0 .sticky-elem,
+#show-scene-1 #scroll-section-1 .sticky-elem, /*stcky elem 없어서 안나타남*/
+#show-scene-2 #scroll-section-2 .sticky-elem,
+#show-scene-3 #scroll-section-3 .sticky-elem{  /*stcky elem 없어서 안나타남*/
+	display: block;
+}
+
+@media (min-width: 1024px) { /*창 크기가 1024px 이상이면 아래css적용*/
+	#scroll-section-0 h1 {
+		font-size: 9vw;  /*뷰포트때문 윈도우 창에 따라 사이즈 바뀜*/
+	}
+	.main-message {
+		font-size: 4vw;  /*뷰포트때문 윈도우 창에 따라 사이즈 바뀜*/
+	}
+	.description {
+		font-size: 2rem;
+	}
+	.description strong {
+		font-size: 6rem;
+	}
+	#scroll-section-2 .main-message {
+		font-size: 6vw;
+	}
+	.main-message small {
+		font-size: 1.5vw;
+	}
+	.desc-message {
+		width: 20%;
+	}
+	.mid-message {
+		font-size: 4vw;  /*창 크기에 따라 바뀜 창 크기에 4%!!*/
+	}
+	.canvas-caption {
+		font-size: 2rem;
+	}	
 }
 
 
